@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 AUTH_USER_MODEL = 'base.User'
@@ -143,3 +144,22 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+
+
+AWS_ACCESS_KEY_ID = 'AKIATCKAPSFW4NAGSEGX'
+AWS_SECRET_ACCESS_KEY = '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'
+
+
+AWS_STORAGE_BUCKET_NAME = 'study-bkt-90'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE = False
+
+# django 5.0
+STORAGES = {
+    'default': {
+        'BACKEND': 'storages.backends.s3boto3.S3StaticStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'storages.backends.s3boto3.S3StaticStorage',
+    },
+}
