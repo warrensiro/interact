@@ -1,5 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from . import views
+
 
 urlpatterns = [
     path('login/password-reset/', auth_views.PasswordResetView.as_view
